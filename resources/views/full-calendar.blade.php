@@ -61,6 +61,30 @@
                         }
                     })
                 }
+            },
+            editable:true,
+            eventResize: function(event, delta)
+            {
+                var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss')
+                var end = $.fullCalendar.formatDate(event.end, 'Y-MM-DD HH:mm:ss')
+                var title = event.title;
+                var id = event.id;
+                $.ajax({
+                    url:"/calendar/action",
+                    type:"POST",
+                    data:{
+                        title:title,
+                        start:start,
+                        end:end,
+                        id:id,
+                        type:'update'
+                    },
+                    success:function(response)
+                    {
+                        calendar.fullCalendar('refetchEvents');
+                        alert('Event Updated Successfully');
+                    }
+                });
             }
         });
         console.log('created calendar');
