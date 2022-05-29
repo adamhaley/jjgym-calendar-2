@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="calendar">
     <br />
     <h1 class="text-center text-primary"></h1>
     <br />
@@ -21,11 +21,12 @@
     $(document).ready(function(){
         $.ajaxSetup({
             headers:{
-                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content');
+                'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
             }
         });
 
         var calendar = $('#calendar').fullCalendar();
+        console.log('created calendar');
     });
 
 </script>
