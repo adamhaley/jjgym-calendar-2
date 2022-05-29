@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('calendar',[FullCalendarController::class, 'index']);
+Route::post('calendar/action',[FullCalendarController::class, 'action']);

@@ -20,4 +20,21 @@ class FullCalendarController extends Controller
        }
         return view('full-calendar');
     }
+
+    public function action(Request $request)
+    {
+        if($request->ajax())
+        {
+            if($request->type == 'add')
+            {
+                $event = Event::create([
+                    'title' => $request->title,
+                    'start' => $request->start,
+                    'end' => $request->end
+                ]);
+
+                return response()->json($event);
+            }
+        }
+    }
 }

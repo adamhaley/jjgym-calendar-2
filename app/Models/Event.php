@@ -13,5 +13,5 @@ class Event extends Model
         'title',
         'start',
         'end'
-    ]
+    ];
 }
