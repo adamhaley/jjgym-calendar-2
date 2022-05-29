@@ -27,7 +27,16 @@
             }
         });
 
-        var calendar = $('#calendar').fullCalendar();
+        var calendar = $('#calendar').fullCalendar({
+            editable:true,
+            header:{
+                left:'prev,next today',
+                center:'title',
+                right:'month,agendaWeek,agendaDay'
+            },
+            events:'/calendar',
+
+        });
         console.log('created calendar');
     });
 
