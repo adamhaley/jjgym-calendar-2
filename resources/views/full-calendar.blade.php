@@ -11,10 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 </head>
 <body>
-<div class="calendar">
+<div class="container">
     <br />
-    <h1 class="text-center text-primary"></h1>
+    <h1 class="text-center text-primary">JJGym Calendar</h1>
     <br />
+
+    <div id="calendar"></div>
 </div>
 
 <script>
