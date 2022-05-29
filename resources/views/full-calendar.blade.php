@@ -108,6 +108,26 @@
                         alert('Event Updated Successfully');
                     }
                 });
+            },
+            eventClick:function(event)
+            {
+                if(confirm("Are you sure you want to remove it?"))
+                {
+                    var id = event.id;
+                    $.ajax({
+                        url:"/calendar/action",
+                        type:"POST",
+                        data:{
+                            id:id,
+                            type:"delete"
+                        },
+                        success:function(response)
+                        {
+                            calendar.fullCalendar('refetchEvents');
+                            alert('Event deleted successfully');
+                        }
+                    })
+                }
             }
         });
         console.log('created calendar');
