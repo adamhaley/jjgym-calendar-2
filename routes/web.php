@@ -19,3 +19,7 @@ Route::get('/', function () {
 
 Route::get('calendar',[FullCalendarController::class, 'index']);
 Route::post('calendar/action',[FullCalendarController::class, 'action']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
