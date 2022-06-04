@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
@@ -22,6 +24,12 @@ class EventResource extends Resource
         return $form
             ->schema([
                 //
+                TextInput::make('title')
+                    ->required(),
+                DateTimePicker::make('start')
+                    ->withoutSeconds(),
+                DateTimePicker::make('end')
+                    ->withoutSeconds()
             ]);
     }
 
