@@ -14,7 +14,7 @@
 <div class="container">
     <br />
     <h1 class="text-center text-primary">JJGym Calendar</h1>
-    <br />
+    <br />[<a href="admin/">Admin</a>]
 
     <div id="calendar"></div>
 </div>
