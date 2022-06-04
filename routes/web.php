@@ -13,9 +13,7 @@ use App\Http\Controllers\FullCalendarController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[FullCalendarController::class, 'index']);
 
 Route::get('calendar',[FullCalendarController::class, 'index']);
 Route::post('calendar/action',[FullCalendarController::class, 'action']);
