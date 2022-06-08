@@ -31,7 +31,7 @@ class EventResource extends Resource
                     ->withoutSeconds(),
                 DateTimePicker::make('end')
                     ->withoutSeconds(),
-                Checkbox::make('pending')
+                Checkbox::make('approved')
             ]);
     }
 
@@ -40,8 +40,8 @@ class EventResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
-                Tables\Columns\BooleanColumn::make('pending')
-                    ->label('Pending')
+                Tables\Columns\BooleanColumn::make('approved')
+                    ->label('Approved')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
