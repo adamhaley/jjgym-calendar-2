@@ -39,12 +39,16 @@
             selectHelper:true,
             select:function(start,end,allDay)
             {
-                var title = prompt('Event Title:');
+                var date = $.fullCalendar.formatDate(start, 'Y-MM-DD');
+                var friendlyStart = $.fullCalendar.formatDate(start, 'HH:mm:ss');
+                var friendlyEnd = $.fullCalendar.formatDate(end, 'HH:mm:ss');
+                var title = prompt('Inquire about gym use on ' + date + ' from ' + friendlyStart + ' to ' + friendlyEnd + '?\n' + 'Event Title:');
 
                 if(title)
                 {
                     var start = $.fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
                     var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
+
                     $.ajax({
                         url:"/calendar/action",
                         type:"POST",
@@ -57,12 +61,12 @@
                         success:function(data)
                         {
                             calendar.fullCalendar('refetchEvents');
-                            alert("Event Created Successfully");
+                            alert("Your request has been sent. An Admin will get back to you shortly!");
                         }
                     })
                 }
             },
-            editable:true,
+            editable:false,
             eventResize: function(event, delta)
             {
                 var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss')
@@ -109,6 +113,7 @@
                     }
                 });
             },
+            /*
             eventClick:function(event)
             {
                 if(confirm("Are you sure you want to remove it?"))
@@ -129,6 +134,7 @@
                     })
                 }
             }
+             */
         });
         console.log('created calendar');
     });
