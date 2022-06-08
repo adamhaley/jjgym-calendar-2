@@ -32,7 +32,8 @@ class EventResource extends Resource
                 DateTimePicker::make('end')
                     ->withoutSeconds(),
                 Checkbox::make('approved')
-            ]);
+            ])
+            ->columns(1);
     }
 
     public static function table(Table $table): Table
