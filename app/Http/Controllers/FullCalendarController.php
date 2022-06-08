@@ -15,6 +15,7 @@ class FullCalendarController extends Controller
        {
            $data = Event::whereDate('start','>=',$request->start)
                ->whereDate('end','<=',$request->end)
+               ->where('approved','=','1')
                ->get(['id','title','start','end']);
            return response()->json($data);
        }
@@ -30,7 +31,8 @@ class FullCalendarController extends Controller
                 $event = Event::create([
                     'title' => $request->title,
                     'start' => $request->start,
-                    'end' => $request->end
+                    'end' => $request->end,
+                    'approved' => 0,
                 ]);
 
                 return response()->json($event);

@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Checkbox;
 use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\RelationManagers;
 use App\Models\Event;
@@ -23,14 +25,15 @@ class EventResource extends Resource
     {
         return $form
             ->schema([
-                //
                 TextInput::make('title')
                     ->required(),
                 DateTimePicker::make('start')
                     ->withoutSeconds(),
                 DateTimePicker::make('end')
-                    ->withoutSeconds()
-            ]);
+                    ->withoutSeconds(),
+                Checkbox::make('approved')
+            ])
+            ->columns(1);
     }
 
     public static function table(Table $table): Table
@@ -38,6 +41,9 @@ class EventResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
+                Tables\Columns\BooleanColumn::make('approved')
+                    ->label('Approved')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
                     ->sortable(),
