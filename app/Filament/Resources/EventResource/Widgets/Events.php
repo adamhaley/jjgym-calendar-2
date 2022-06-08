@@ -20,6 +20,8 @@ class Events extends BaseWidget
     {
         return [
             Tables\Columns\TextColumn::make('id'),
+            Tables\Columns\Boolean::make('events.pending')
+                ->label('Pending'),
             Tables\Columns\TextColumn::make('events.title')
                 ->label('Title'),
             Tables\Columns\TextColumn::make('events.start')
