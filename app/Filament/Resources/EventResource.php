@@ -40,7 +40,8 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
+                Tables\Columns\TextColumn::make('id')
+                    ->sortable(),
                 Tables\Columns\BooleanColumn::make('approved')
                     ->label('Approved')
                     ->sortable(),
@@ -56,7 +57,7 @@ class EventResource extends Resource
                     ->date()
                     ->sortable(),
             ])
-            ->defaultSort('start','desc')
+            ->defaultSort('id','desc')
             ->filters([
                 //
             ]);
