@@ -18,21 +18,21 @@ return new class extends Migration
             array(
                 'name' => 'Adam Haley',
                 'email' => 'adamhaley@gmail.com',
-                'password' => 'password'
+                'password' => Hash::make('password')
             )
         );
         DB::table('users')->insert(
             array(
                 'name' => 'Jeri Kalvan',
                 'email' => 'jeri@kalvan.net',
-                'password' => 'password'
+                'password' => Hash::make('password')
             )
         );
         DB::table('users')->insert(
             array(
                 'name' => 'Jack Kalvan',
                 'email' => 'jack@kalvan.net',
-                'password' => 'password'
+                'password' => Hash::make('password')
             )
         );
     }
