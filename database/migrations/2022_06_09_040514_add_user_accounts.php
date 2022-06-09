@@ -24,7 +24,7 @@ return new class extends Migration
         );
         DB::table('users')->insert(
             array(
-                'name' => 'Jeri Kalvan'
+                'name' => 'Jeri Kalvan',
                 'email' => 'jeri@kalvan.net',
                 'verified' => true,
                 'password' => 'password'
@@ -32,7 +32,7 @@ return new class extends Migration
         );
         DB::table('users')->insert(
             array(
-                'name' => 'Jack Kalvan'
+                'name' => 'Jack Kalvan',
                 'email' => 'jack@kalvan.net',
                 'verified' => true,
                 'password' => 'password'
