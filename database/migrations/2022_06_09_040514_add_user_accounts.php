@@ -16,9 +16,8 @@ return new class extends Migration
         //add admin accounts for Adam, Jack, and Jeri
         DB::table('users')->insert(
             array(
-                'name' => 'Adam Haley'
+                'name' => 'Adam Haley',
                 'email' => 'adamhaley@gmail.com',
-                'verified' => true,
                 'password' => 'password'
             )
         );
@@ -26,7 +25,6 @@ return new class extends Migration
             array(
                 'name' => 'Jeri Kalvan',
                 'email' => 'jeri@kalvan.net',
-                'verified' => true,
                 'password' => 'password'
             )
         );
@@ -34,7 +32,6 @@ return new class extends Migration
             array(
                 'name' => 'Jack Kalvan',
                 'email' => 'jack@kalvan.net',
-                'verified' => true,
                 'password' => 'password'
             )
         );
