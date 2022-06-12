@@ -73,6 +73,8 @@
             eventColor: '#fff',
             minTime:'08:00',
             maxTime:'22:00',
+            eventTimeFormat: 'hh:mma',
+            hour12: true,
             eventResize: function(event, delta)
             {
                 var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss')
