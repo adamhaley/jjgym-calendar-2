@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="js/app.js"></script>
 </head>
 <body>
 <div class="container">
@@ -113,6 +114,7 @@
                     }
                 });
             },
+            defaultView: window.innerWidth <= 765 ?  "listMonth": "month",
             /*
             eventClick:function(event)
             {
