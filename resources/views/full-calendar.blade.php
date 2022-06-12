@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 <div class="container">
@@ -31,7 +32,6 @@
         });
 
         var calendar = $('#calendar').fullCalendar({
-            editable:true,
             header:{
                 left:'prev,next today',
                 center:'title',
@@ -70,6 +70,9 @@
                 }
             },
             editable:false,
+            eventColor: '#fff',
+            minTime:'08:00',
+            maxTime:'22:00',
             eventResize: function(event, delta)
             {
                 var start = $.fullCalendar.formatDate(event.start, 'Y-MM-DD HH:mm:ss')
