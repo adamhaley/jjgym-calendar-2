@@ -18,7 +18,7 @@
 <div class="container">
     <br />
     <h1 class="text-center text-primary">JJGym Calendar</h1>
-    <br />[<a href="admin/">Admin</a>]
+    <br />[<a href="admin/">Admin</a>] [<a href="#" class="request-time">Request Time</a>]
 
     <div id="calendar"></div>
 </div>
@@ -31,7 +31,7 @@
             }
         });
 
-        var calendar = $('#calendar').fullCalendar({
+        window.calendar = $('#calendar').fullCalendar({
             header:{
                 left:'prev,next today',
                 center:'title',
@@ -40,6 +40,7 @@
             events:'/calendar',
             selectable:true,
             selectHelper:true,
+            /*
             select:function(start,end,allDay)
             {
                 var date = $.fullCalendar.formatDate(start, 'Y-MM-DD');
@@ -69,6 +70,7 @@
                     })
                 }
             },
+             */
             editable:false,
             eventColor: '#fff',
             minTime:'08:00',
@@ -147,9 +149,17 @@
              */
         });
         console.log('created calendar');
+        $('.request-time').click((e) => {
+            $('.fc-view-container').toggleClass('active');
+            console.log('in toggleCalendarMode');
+            calendar.on('dateClick', function(e) {
+                console.log(e);
+                console.log('clicked on ' + info.dateStr);
+            });
+        });
     });
 
-</script>
 
+</script>
 </body>
 </html>
