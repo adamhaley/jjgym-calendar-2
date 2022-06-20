@@ -19,7 +19,7 @@
     <br />
     <h1 class="text-center text-primary">JJGym Calendar</h1>
     <br />[<a href="admin/">Admin</a>] [<a href="#" class="request-time">Request Time</a>]
-
+    <span class="cta float-right d-none text-primary">Click anywhere on the calendar to request a time slot:</span>
     <div id="calendar"></div>
 </div>
 
@@ -151,9 +151,9 @@
         console.log('created calendar');
         $('.request-time').click((e) => {
             $('.fc-view-container').toggleClass('active');
+            $('.cta').toggleClass('d-none').toggleClass('d-block');
             console.log('in toggleCalendarMode');
             calendar.on('dateClick', function(e) {
-                console.log(e);
                 console.log('clicked on ' + info.dateStr);
             });
         });
