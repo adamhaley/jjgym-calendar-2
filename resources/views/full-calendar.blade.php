@@ -86,15 +86,12 @@
         $('.request-time').click((e) => {
             $('.fc-view-harness').toggleClass('active');
             $('.cta').toggleClass('d-none').toggleClass('d-block');
-            console.log('in toggleCalendarMode');
             if($('.fc-view-harness').hasClass('active')) {
                 calendar.on('select', function (e) {
                     $('.modal').modal('show');
                 });
             }else{
-                calendar.off('select', function (e) {
-                    $('.modal').modal('show');
-                });
+                calendar.off('select');
             }
         });
     });
