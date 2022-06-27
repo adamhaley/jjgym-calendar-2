@@ -32,18 +32,18 @@
                 <h5 class="modal-title">Request Time</h5>
             </div>
             <div class="modal-body">
-                <form>
-                    <input type="text" name="title" placeholder="Event Title"><br /><br />
-                    <input type="text" name="name" placeholder="Your Name"><br /><br />
+                <form name="event-info" id="event-info">
+                    <input type="text" name="title" placeholder="Event Title" style="width:100%"><br /><br />
+                    <input type="text" name="name" placeholder="Your Name" style="width:100%"><br /><br />
                     <input type="number" min="1" max="5"> people total<br /><br />
-                    <input type="time" value="8:00" step="900"> Start<br /><br />
-                    <input type="time" calue="9:00" step="900"> End<br /><br />
-                    <textarea name="note" placeholder="Note"></textarea>
+                    <input type="time" name="start" value="8:00" step="900"> Start<br /><br />
+                    <input type="time" name="end" calue="9:00" step="900"> End<br /><br />
+                    <textarea name="note" placeholder="Note" style="width:100%"></textarea>
 
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" id="submit" class="btn btn-primary">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>
@@ -96,17 +96,19 @@
         });
     });
 
-    $('.modal form').submit(() => {
-        var start = $.fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
-        var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
+    $('#submit').click(() => {
+        console.log($('#event-info'));
+        // var start = $.fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
+        // var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
+        formData = $('form#event-info')[0];
 
         $.ajax({
             url:"/calendar/action",
             type:"POST",
             data:{
-                title:title,
-                start:start,
-                end:end,
+                title:formData.title,
+                start:formData.start,
+                end:formData.end,
                 type: 'add'
             },
             success:function(data)
