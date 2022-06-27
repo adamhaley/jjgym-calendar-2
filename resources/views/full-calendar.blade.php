@@ -30,12 +30,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Request Time</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
             </div>
             <div class="modal-body">
                 <form>
+                    <input type="text" name="title" placeholder="Event Title"><br /><br />
+                    <input type="text" name="name" placeholder="Your Name"><br /><br />
+                    <input type="number" min="1" max="5"> people total<br /><br />
+                    <input type="time" value="8:00" step="900"> Start<br /><br />
+                    <input type="time" calue="9:00" step="900"> End<br /><br />
+                    <textarea name="note" placeholder="Note"></textarea>
 
                 </form>
             </div>
@@ -57,21 +60,18 @@
 
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl,{
-            header:{
+            headerToolbar:{
                 left:'prev,next today',
                 center:'title',
-                right:'month,agendaWeek,agendaDay'
+                right:'dayGridMonth,timeGridWeek,timeGridDay'
             },
             events:'/calendar',
             selectable:true,
             selectHelper:true,
-            select: function(start,end,allDay)
-            {
-            },
             editable:false,
             eventColor: '#fff',
-            minTime:'08:00',
-            maxTime:'22:00',
+            slotMinTime:'08:00',
+            slotMaxTime:'22:00',
             eventTimeFormat: {
                 hour: 'numeric',
                 minute: '2-digit',
