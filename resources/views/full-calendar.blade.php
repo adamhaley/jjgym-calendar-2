@@ -61,15 +61,15 @@
 
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl,{
-            headerToolbar:{
+            headerToolbar: {
                 left:'prev,next today',
                 center:'title',
                 right:'dayGridMonth,timeGridWeek,timeGridDay'
             },
-            events:'/calendar',
-            selectable:true,
-            selectHelper:true,
-            editable:false,
+            events: '/calendar',
+            selectable: true,
+            selectHelper: true,
+            editable: false,
             eventColor: '#fff',
             slotMinTime:'08:00',
             slotMaxTime:'22:00',
@@ -105,19 +105,24 @@
         // var start = .fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
         // var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
         formData = $('form#event-info')[0];
+        var start = formData.date.value + ' ' + formData.start.value;
+        var end = formData.date.value + ' ' + formData.end.value;
+
+        console.log('start: ' + start);
+        console.log('end: ' + end);
 
         $.ajax({
             url:"/calendar/action",
             type:"POST",
             data:{
-                title:formData.title,
-                start:formData.start,
-                end:formData.end,
+                title:formData.title.value,
+                start:start,
+                end:end,
                 type: 'add'
             },
             success:function(data)
             {
-                calendar.fullCalendar('refetchEvents');
+                $('.modal').modal('hide');
                 alert("Your request has been sent. An Admin will get back to you shortly!");
             }
         })
