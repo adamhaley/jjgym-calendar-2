@@ -11,17 +11,16 @@ class FullCalendarController extends Controller
     //
     public function index(Request $request)
     {
-       if($request->ajax())
-       {
-           $data = Event::whereDate('start','>=',$request->start)
-               ->whereDate('end','<=',$request->end)
-               ->where('approved','=','1')
-               ->get(['id','title','start','end']);
-           return response()->json($data);
-       }
         return view('full-calendar');
     }
-
+    public function events(Request $request)
+    {
+        $data = Event::whereDate('start','>=',$request->start)
+            ->whereDate('end','<=',$request->end)
+            ->where('approved','=','1')
+            ->get(['id','title','start','end']);
+        return response()->json($data);
+    }
     public function action(Request $request)
     {
         if($request->ajax())

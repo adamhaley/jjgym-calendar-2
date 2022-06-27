@@ -15,5 +15,5 @@ use App\Http\Controllers\FullCalendarController;
 
 Route::get('/',[FullCalendarController::class, 'index']);
 
-Route::get('calendar',[FullCalendarController::class, 'index']);
+Route::get('calendar',[FullCalendarController::class, 'events']);
 Route::post('calendar/action',[FullCalendarController::class, 'action']);
