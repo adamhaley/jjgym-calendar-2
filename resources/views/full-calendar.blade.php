@@ -29,15 +29,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Request Time</h5>
+                <h5 class="modal-title">Request Time on <span class="selected-date"></span></h5>
             </div>
             <div class="modal-body">
                 <form name="event-info" id="event-info">
+                    <input type="hidden" name="date">
                     <input type="text" name="title" placeholder="Event Title" style="width:100%"><br /><br />
                     <input type="text" name="name" placeholder="Your Name" style="width:100%"><br /><br />
                     <input type="number" min="1" max="5"> people total<br /><br />
-                    <input type="time" name="start" value="8:00" step="900"> Start<br /><br />
-                    <input type="time" name="end" calue="9:00" step="900"> End<br /><br />
+                    <input type="time" name="start" value="08:00" step="900"> Start<br /><br />
+                    <input type="time" name="end" value="09:00" step="900"> End<br /><br />
                     <textarea name="note" placeholder="Note" style="width:100%"></textarea>
 
                 </form>
@@ -88,6 +89,9 @@
             $('.cta').toggleClass('d-none').toggleClass('d-block');
             if($('.fc-view-harness').hasClass('active')) {
                 calendar.on('select', function (e) {
+                    console.log(e);
+                    $('form#event-info')[0].date.value = e.startStr;
+                    $('.modal-content .selected-date').text(moment(e.startStr,"Y-MM-DD").format('dddd MMM d, Y'));
                     $('.modal').modal('show');
                 });
             }else{
@@ -98,7 +102,7 @@
 
     $('#submit').click(() => {
         console.log($('#event-info'));
-        // var start = $.fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
+        // var start = .fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
         // var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
         formData = $('form#event-info')[0];
 
