@@ -1,4 +1,9 @@
-.fc-view-container.active{
+.fc-view-harness.active{
     border:1px solid #007bff;
     background-color:#e8fafd;
+    cursor:pointer;
+}
+
+.fc-view-harness.active td.fc-day:hover{
+    background-color: #d1f3f3;
 }
