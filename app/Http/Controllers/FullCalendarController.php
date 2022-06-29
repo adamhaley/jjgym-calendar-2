@@ -31,6 +31,10 @@ class FullCalendarController extends Controller
                     'title' => $request->title,
                     'start' => $request->start,
                     'end' => $request->end,
+                    'name' => $request->name,
+                    'num_people' => $request->num_people,
+                    'contact' => $request->contact,
+                    'note' => $request->note,
                     'approved' => 0,
                 ]);
 

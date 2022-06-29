@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TextArea;
 use Filament\Forms\Components\Checkbox;
 use App\Filament\Resources\EventResource\Pages;
 use App\Filament\Resources\EventResource\RelationManagers;
@@ -27,9 +28,20 @@ class EventResource extends Resource
             ->schema([
                 TextInput::make('title')
                     ->required(),
+                TextInput::make('name')
+                    ->required(),
+                TextInput::make('contact'),
+                TextInput::make('num_people')
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(5),
+                Textarea::make('note')
+                    ->cols(20),
                 DateTimePicker::make('start')
+                    ->displayFormat('F j, Y g:ia')
                     ->withoutSeconds(),
                 DateTimePicker::make('end')
+                    ->displayFormat('F j, Y g:ia')
                     ->withoutSeconds(),
                 Checkbox::make('approved')
             ])
@@ -48,13 +60,19 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
                     ->sortable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Name')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('contact')
+                    ->label('Contact')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('start')
                     ->label('Start Time')
-                    ->date()
+                    ->dateTime('F j g:ia')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('end')
                     ->label('End Time')
-                    ->date()
+                    ->dateTime('F j g:ia')
                     ->sortable(),
             ])
             ->defaultSort('id','desc')

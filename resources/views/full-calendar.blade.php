@@ -28,25 +28,25 @@
 <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Request Time on <span class="selected-date"></span></h5>
-            </div>
-            <div class="modal-body">
-                <form name="event-info" id="event-info">
-                    <input type="hidden" name="date">
-                    <input type="text" name="title" placeholder="Event Title" style="width:100%"><br /><br />
-                    <input type="text" name="name" placeholder="Your Name" style="width:100%"><br /><br />
-                    <input type="number" min="1" max="5"> people total<br /><br />
-                    <input type="time" name="start" value="08:00" step="900"> Start<br /><br />
-                    <input type="time" name="end" value="09:00" step="900"> End<br /><br />
-                    <textarea name="note" placeholder="Note" style="width:100%"></textarea>
-
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
+            <form name="event-info" id="event-info">
+                <div class="modal-header">
+                    <h5 class="modal-title">Request Time on <span class="selected-date"></span></h5>
+                </div>
+                <div class="modal-body">
+                        <input type="hidden" name="date">
+                        <input type="text" name="title" placeholder="Event Title" style="width:100%"><br /><br />
+                        <input type="text" name="name" placeholder="Your Name" style="width:100%"><br /><br />
+                        <input type="text" name="contact" placeholder="Contact Info (email address or phone #)" style="width:100%"><br /><br />
+                        <input type="number" name="num_people" min="1" max="5"> people total<br /><br />
+                        <input type="time" name="start" value="08:00" step="900"> Start<br /><br />
+                        <input type="time" name="end" value="09:00" step="900"> End<br /><br />
+                        <textarea name="note" placeholder="Note" style="width:100%"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -100,8 +100,10 @@
         });
     });
 
-    $('#submit').click(() => {
-        console.log($('#event-info'));
+    $('form#event-info').submit((e) => {
+        console.log('FORM SUBMITTED');
+        console.log(e);
+        e.preventDefault();
         // var start = .fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
         // var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
         formData = $('form#event-info')[0];
@@ -118,6 +120,10 @@
                 title:formData.title.value,
                 start:start,
                 end:end,
+                name:formData.name.value,
+                contact:formData.contact.value,
+                num_people:formData.num_people.value,
+                note:formData.note.value,
                 type: 'add'
             },
             success:function(data)
