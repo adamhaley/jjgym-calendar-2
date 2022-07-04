@@ -29,6 +29,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form name="event-info" id="event-info">
+
                 <div class="modal-header">
                     <h5 class="modal-title">Request Time on <span class="selected-date"></span></h5>
                 </div>
@@ -104,6 +105,12 @@
         console.log('FORM SUBMITTED');
         console.log(e);
         e.preventDefault();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         // var start = .fullCalendar.formatDate(start, 'Y-MM-DD HH:mm:ss');
         // var end = $.fullCalendar.formatDate(end, 'Y-MM-DD HH:mm:ss');
         formData = $('form#event-info')[0];
