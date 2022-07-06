@@ -41,7 +41,7 @@
                         <input type="number" name="num_people" min="1" max="5"> people total<br /><br />
                         <input type="time" name="start" value="08:00" step="900"> Start<br /><br />
                         <input type="time" name="end" value="09:00" step="900"> End<br /><br />
-                        <textarea name="note" placeholder="Note" style="width:100%"></textarea>
+                        <textarea name="note" placeholder="Note" style="width:100%" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
@@ -72,6 +72,7 @@
             selectHelper: true,
             editable: false,
             eventColor: '#fff',
+            eventTextColor: '#000',
             slotMinTime:'08:00',
             slotMaxTime:'22:00',
             eventTimeFormat: {
@@ -79,9 +80,17 @@
                 minute: '2-digit',
                 meridiem:'short'
             },
+            displayEventEnd: true,
             hour12: true,
             html: true,
-            themeSystem: 'bootstrap5'
+            themeSystem: 'bootstrap5',
+            eventDidMount: function(info) {
+                // console.log($(info.el));
+                var lineBreak = document.createElement('br');
+                var nameDiv = document.createElement('div');
+                nameDiv.textContent = info.event.extendedProps.name;
+                info.el.appendChild(nameDiv);
+            }
         });
         calendar.render();
         console.log('created calendar');
