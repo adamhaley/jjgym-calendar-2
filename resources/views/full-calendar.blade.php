@@ -72,6 +72,7 @@
             selectHelper: true,
             editable: false,
             eventColor: '#fff',
+            eventTextColor: '#000',
             slotMinTime:'08:00',
             slotMaxTime:'22:00',
             eventTimeFormat: {
@@ -79,9 +80,18 @@
                 minute: '2-digit',
                 meridiem:'short'
             },
+            displayEventEnd: true,
             hour12: true,
             html: true,
-            themeSystem: 'bootstrap5'
+            themeSystem: 'bootstrap5',
+            eventDidMount: function(info) {
+                console.log($(info.el));
+                var lineBreak = document.createElement('br');
+                var nameDiv = document.createElement('div');
+                nameDiv.textContent = info.event.extendedProps.name;
+                info.el.appendChild(nameDiv);
+                // info.el.html(nameDiv);
+            }
         });
         calendar.render();
         console.log('created calendar');

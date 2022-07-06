@@ -3,8 +3,14 @@
     background-color:#e8fafd;
     cursor:pointer;
 }
+.fc-daygrid-dot-event{
+    display: block;
+}
+
 
 .fc-view-harness.active td.fc-day:hover{
     background-color: #d1f3f3;
 }
+
+.fc-day-grid-event .fc-content{ white-space: normal!important; }
 
