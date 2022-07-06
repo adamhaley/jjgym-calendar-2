@@ -6,7 +6,12 @@
 .fc-daygrid-dot-event{
     display: block;
 }
-
+.fc-daygrid-dot-event .fc-event-time{
+    font-weight: 600;
+}
+.fc-daygrid-dot-event .fc-event-title{
+    font-weight: 400;
+}
 
 .fc-view-harness.active td.fc-day:hover{
     background-color: #d1f3f3;

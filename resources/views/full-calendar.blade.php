@@ -85,12 +85,11 @@
             html: true,
             themeSystem: 'bootstrap5',
             eventDidMount: function(info) {
-                console.log($(info.el));
+                // console.log($(info.el));
                 var lineBreak = document.createElement('br');
                 var nameDiv = document.createElement('div');
                 nameDiv.textContent = info.event.extendedProps.name;
                 info.el.appendChild(nameDiv);
-                // info.el.html(nameDiv);
             }
         });
         calendar.render();
