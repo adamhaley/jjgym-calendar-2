@@ -100,8 +100,9 @@
             if($('.fc-view-harness').hasClass('active')) {
                 calendar.on('select', function (e) {
                     console.log(e);
+                    debugger;
                     $('form#event-info')[0].date.value = e.startStr;
-                    $('.modal-content .selected-date').text(moment(e.startStr,"Y-MM-DD").format('dddd MMM d, Y'));
+                    $('.modal-content .selected-date').text(moment(e.startStr,"Y-MM-DD").format('dddd MMM D, Y'));
                     $('.modal').modal('show');
                 });
             }else{
