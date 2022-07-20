@@ -63,22 +63,20 @@ class EventResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label('Name')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('contact')
-                    ->label('Contact')
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('start')
                     ->label('Start Time')
                     ->dateTime('F j g:ia')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('end')
-                    ->label('End Time')
-                    ->dateTime('F j g:ia')
-                    ->sortable(),
             ])
             ->defaultSort('id','desc')
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ReplicateAction::make()
+            ])
             ->filters([
-                //
-            ]);
+                    //
+                ]);
     }
 
     public static function getRelations(): array
