@@ -30,7 +30,8 @@ class EventResource extends Resource
                     ->required(),
                 TextInput::make('name')
                     ->required(),
-                TextInput::make('contact'),
+                TextInput::make('contact')
+                    ->required(),
                 TextInput::make('num_people')
                     ->numeric()
                     ->minValue(1)
